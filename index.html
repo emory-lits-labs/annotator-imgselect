@@ -1,3 +1,5 @@
+---
+---
 <!doctype html>
 <html>
   <head>
@@ -21,7 +23,7 @@
 
         <p class="view"><a href="https://github.com/emory-lits-labs/annotator-imgselect">View the Project on GitHub <small>emory-lits-labs/annotator-imgselect</small></a></p>
 
-
+        version {{ site.data.package.version }}
         <ul>
           <li><a href="https://github.com/emory-lits-labs/annotator-imgselect/zipball/master">Download <strong>ZIP File</strong></a></li>
           <li><a href="https://github.com/emory-lits-labs/annotator-imgselect/tarball/master">Download <strong>TAR Ball</strong></a></li>
@@ -35,21 +37,39 @@
 
 <p>Create annotator.js annotations that are anchored to portions of images.</p>
 
+<p>Try it out in this <a href="demo/">simple image annotation demo</a>.</p>
+
 <h3>
 <a id="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h3>
 
-<p>installation instructions</p>
+<p>Using this annotator plugin requires imgareaselect CSS and
+javascript and the annotator-imgselect javascript.  A minified version
+of the combined imgareaselect and annotator-imgselect are
+provided for convenience.</p>
 
-<h3>
-<a id="demo" class="anchor" href="#demo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Demo</h3>
+<p>Include the appropriate CSS and Javascript files:</p>
 
-<p>Try it out in the <a href="demo/">demo</a>.</p>
+{% highlight html %}
+<link rel="stylesheet" type="text/css" href="http://emory-lits-labs.github.io/annotator-imgselect/src/jquery.imgareaselect-0.9.10/css/imgareaselect-default.css" />
+<script type="text/javascript" src="http://emory-lits-labs.github.io/annotator-imgselect/build/{{ site.data.package.version }}/annotator.imgselect.min.js"></script>
+{% endhighlight %}
+
+
+<p>In your annotator application initialization, load the module and
+configure it with a selector for images that can be annotated.</p>
+
+{% highlight html %}
+    var app = new annotator.App();
+    app.include(annotatorImageSelect, {
+        element: $('.content img'),
+    });
+{% endhighlight %}
 
 
 <h3>
 <a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
 
-<p>Created by Rebecca Sutton Koeser (<a href="https://github.com/rlskoeser" class="user-mention">@rlskoeser</a>) and Kevin Glover (<a href="https://github.com/kevinglover" class="user-mention">@kevinglover</a>), 2015. Originally created as part of <a href="https://github.com/emory-libraries/readux">readux</a>.</p>
+<p>Created by Rebecca Sutton Koeser (<a href="https://github.com/rlskoeser" class="user-mention">@rlskoeser</a>) and Kevin Glover (<a href="https://github.com/kevinglover" class="user-mention">@kevinglover</a>), 2015. Originally developed as part of <a href="https://github.com/emory-libraries/readux">readux</a>.</p>
 
       </section>
       <footer>
