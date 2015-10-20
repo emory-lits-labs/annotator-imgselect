@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Annotator-imgselect demo</title>
+
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"/>
+    <link href="css/annotator.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="../src/jquery.imgareaselect-0.9.10/css/imgareaselect-default.css"/>
+
+    <style>
+      body {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+        letter-spacing: 0.01rem;
+        font-size: 22px;
+        line-height: 1.5;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+      }
+      header, article {
+        width: 1000px;
+        margin: 2em auto;
+        position: relative;
+        z-index: 2;
+      }
+      .highlight {
+        background: rgba(255, 10, 10, 0.3);
+      }
+      .inner{
+        background: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>Demonstration of annotator-imgselect</h1>
+
+      <p>Drag your mouse over a portion of the image to select it and create
+      an annotation. You can drag a selection to move it before you
+      create the annotation.</p>
+
+    </header>
+
+    <article class="content">
+      <section class="inner" style="position:relative">
+        <img src="OSH14.jpg"/>
+        <p>Page 14 of the 1911 <i>Original Sacred Harp</i>.</p>
+
+      </section>
+    </article>
+
+    <!-- The main Annotator script -->
+    <script type="text/javascript" src="js/annotator.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="../src/jquery.imgareaselect-0.9.10/scripts/jquery.imgareaselect.min.js"></script>
+    <script type="text/javascript" src="../src/annotator.imgselect.js"></script>
+
+    <script type="text/javascript">
+      var demo_url = 'http://emory-lits-labs.github.io/annotator-imgselect/demo/';
+
+      $( document ).ready()
+        if (typeof annotator === 'undefined') {
+          alert("Oops! Something went wrong and Annotator isn't loaded.");
+      } else {
+        var app = new annotator.App();
+        app.include(annotator.ui.main,{
+              element: document.querySelector('.content .inner'),
+            })
+            .include(annotatorImageSelect, {
+              element: $('.content img'),
+           });
+          app.start();
+      }
+    </script>
+  </body>
+</html>
