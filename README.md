@@ -22,22 +22,9 @@ To use this plugin in your Annotator project, include the required
 javascript and css, and initialize it as an annotator module with a
 configuration of the image elements that can be selected for annotation.
 
+See [installation instructions](http://emory-lits-labs.github.io/annotator-imgselect/#install) for more details.
 
-Include imgareaselect CSS (provided here for convenience), imgareaselect
-javascript, and the annotator-imgselect javascript.
-(Built, minified version includes imgareaselect for convenience).
-
-* http://emory-lits-labs.github.io/annotator-imgselect/src/jquery.imgareaselect-0.9.10/css/imgareaselect-default.css"/>
-* http://emory-lits-labs.github.io/annotator-imgselect/build/latest/annotator.imgselect.min.js
-
-
-```
-    var app = new annotator.App();
-    app.include(annotatorImageSelect, {
-        element: $('.content img'),
-    });
-
-```
+<!--- TODO: probably worth documenting briefly how image coordinates are stored -->
 
 ## Developer Notes
 
@@ -62,5 +49,4 @@ can be included from the github pages url, you should also do the following:
 - update the version number in package.json
 - checkout gh-pages branch and run ```grunt```
 - add the build version of annotator.imgselect.min.js to gh-pages branch
-- update the latest symlink
 
