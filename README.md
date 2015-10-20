@@ -22,6 +22,15 @@ To use this plugin in your Annotator project, include the required
 javascript and css, and initialize it as an annotator module with a
 configuration of the image elements that can be selected for annotation.
 
+
+Include imgareaselect CSS (provided here for convenience), imgareaselect
+javascript, and the annotator-imgselect javascript.
+(Built, minified version includes imgareaselect for convenience).
+
+* http://emory-lits-labs.github.io/annotator-imgselect/src/jquery.imgareaselect-0.9.10/css/imgareaselect-default.css"/>
+* http://emory-lits-labs.github.io/annotator-imgselect/build/latest/annotator.imgselect.min.js
+
+
 ```
     var app = new annotator.App();
     app.include(annotatorImageSelect, {
@@ -30,4 +39,5 @@ configuration of the image elements that can be selected for annotation.
 
 ```
 
-.. todo: installation/required files
+##Installation
+
