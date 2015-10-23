@@ -27,20 +27,21 @@ function annotatorImageSelect(options) {
   // utility methods to support image annotation
   var imgselect_utils = {
     // image area inital setup
-    selectionSetup:function(){
+    selectionSetup: function() {
       $(document)
-        .on('click.imgselection','.imgareaselect-outer, .annotator-cancel',function(evt){
-          var $active = $(".active-img-selection");
-          $active.removeClass('active-img-selection');
+        .on('click.imgselection','.imgareaselect-outer, .annotator-cancel', function(evt) {
+          $(".active-img-selection").removeClass('active-img-selection');
         });
       return true;
     },
 
-    // image area selection start event
-    selectionStart: function(img, selection) {
+    hideAnnotatorEditorAdder: function() {
+      // hide annotator editor window, adder button, and deselect text
+      // whenever an image selection is drawn or adjusted
+
       // hide editor if visible
       var $visible_editor = $(".annotator-editor:not(.annotator-hide)");
-      if ($visible_editor.length>0){
+      if ($visible_editor.length > 0){
         $visible_editor.addClass('annotator-hide');
       }
       // hide the adder whenever a new selection is started
@@ -50,17 +51,14 @@ function annotatorImageSelect(options) {
       global.getSelection().removeAllRanges();
     },
 
+    // image area selection start event
+    selectionStart: function(img, selection) {
+      imgselect_utils.hideAnnotatorEditorAdder();
+    },
+
     // image area selection change event
     selectionChange: function(img, selection) {
-      // hide the adder whenever a new selection is started
-      s.adder.hide();
-      // hide the text selection adder.
-      var $visible_editor = $(".annotator-editor:not(.annotator-hide)");
-      if ($visible_editor.length>0){
-        $visible_editor.addClass('annotator-hide');
-      }
-      // TODO: hide text selection adder if possible
-
+      imgselect_utils.hideAnnotatorEditorAdder();
     },
 
     // image area selection end event
@@ -82,6 +80,7 @@ function annotatorImageSelect(options) {
         // image selection details
         image_selection: imgselect_utils.imageSelection(img, selection)
       };
+
       $(".annotator-adder+div").addClass('active-img-selection');
       // calculate "interaction point" - using top right of selection box
       s.interactionPoint = imgselect_utils.selectionPosition(img, selection);
@@ -90,7 +89,7 @@ function annotatorImageSelect(options) {
 
       // set editor window is not positioned relative to the adder element
       var offset = $(s.adder.element[0]).offset();
-      if(offset){
+      if (offset){
         $(".annotator-editor").css({
           top: offset.top + 50,
           left: offset.left - (selection.width/2)
@@ -134,7 +133,8 @@ function annotatorImageSelect(options) {
      // NOTE: this relies on readux style/layout for correct placement
      img.parent().append(hl);
 
-      return true;
+      // return the added highlight element
+      return hl;
     },
 
     // get position from image + selection
@@ -240,12 +240,15 @@ function annotatorImageSelect(options) {
         if (s.ias !== null) {
           s.ias.cancelSelection();
         }
+        // create a temporary highlight to show what is being annotated
+        var tmp_hl = imgselect_utils.drawImageHighlight(annotation);
+        tmp_hl.addClass('active-img-selection').removeClass('annotator-hl');
         return true;
       },
 
       annotationCreated: function(annotation) {
-        // hide highlight
-        $(".active-img-selection").removeClass('active-img-selection');
+        // hide the temporary highlight
+        $(".active-img-selection").removeClass('.active-img-selection');
         // show image highlight div for new image annotation
         imgselect_utils.drawImageHighlight(annotation);
         return true;

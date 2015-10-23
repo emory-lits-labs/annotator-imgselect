@@ -24,7 +24,24 @@ configuration of the image elements that can be selected for annotation.
 
 See [installation instructions](http://emory-lits-labs.github.io/annotator-imgselect/#install) for more details.
 
-<!--- TODO: probably worth documenting briefly how image coordinates are stored -->
+Placement of the image highlights currently requires that images be placed
+inside a parent element that can be used to contain and position highlights.
+See the [demo](http://emory-lits-labs.github.io/annotator-imgselect/demo/)
+for examples.
+
+##Technical details
+
+Image annotations are created with an empty quote and XPath DOM range (since
+no text is quoted and no DOM element precisely is selected), and makes use
+of the flexible extra data allowed for in annotations to add an **image_selection**
+entry with **src** and full **uri** to identify the image being annotated,
+along with percentage based width, height, and x and y coordinates to
+identify the portion of the image being annotated.
+
+Image selection is on the roadmap to be natively supported in annotator.js,
+but this plugin was created in order to support image annotation in the meantime
+with the hope that eventually image annotations could be migrated to whatever
+format is determined for storing image annotations.
 
 ## Developer Notes
 
@@ -42,7 +59,7 @@ from master and push it to github, you may want to configure the following alias
 in your ``.git/config`` for this project:
 
     [alias]
-        publish-pages = "!git checkout gh-pages && git merge master && git push origin gh-pages && git checkout -"
+        publish-pages = "!rm -rf build && git checkout gh-pages && git merge master && grunt && git push origin gh-pages && git checkout -"
 
 Whenever you tag a new release you want to be available as a version that
 can be included from the github pages url, you should also do the following:

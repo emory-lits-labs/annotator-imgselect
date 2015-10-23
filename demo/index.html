@@ -29,6 +29,13 @@
       .inner{
         background: white;
       }
+
+      .content img {
+        -moz-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -o-user-select: none;
+      }
     </style>
   </head>
 
@@ -43,9 +50,19 @@
     </header>
 
     <article class="content">
-      <section class="inner" style="position:relative">
-        <img src="OSH14.jpg"/>
+      <section class="inner" style="position:relative;left:0">
+
+        <div style="position:relative">
+        <img src="images/OSH14.jpg"/>
+        </div>
         <p>Page 14 of the 1911 <i>Original Sacred Harp</i>.</p>
+
+        <!-- fixme: image selection doesn't seem to clear from second image -->
+        <div style="position:relative;display:inline-block">
+          <img src="images/old-red-barn.jpg"/>
+        </div>
+        <p>Old red barn from <a href="http://publicdomainarchive.com/public-domain-images-old-red-barn-black-fence-christmas-star-american-flag/">Public Domain archive</a></p>
+
 
       </section>
     </article>
@@ -57,8 +74,6 @@
     <script type="text/javascript" src="../src/annotator.imgselect.js"></script>
 
     <script type="text/javascript">
-      var demo_url = 'http://emory-lits-labs.github.io/annotator-imgselect/demo/';
-
       $( document ).ready()
         if (typeof annotator === 'undefined') {
           alert("Oops! Something went wrong and Annotator isn't loaded.");
