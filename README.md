@@ -59,7 +59,7 @@ from master and push it to github, you may want to configure the following alias
 in your ``.git/config`` for this project:
 
     [alias]
-        publish-pages = "!rm -rf build && git checkout gh-pages && git merge master && grunt && git push origin gh-pages && git checkout -"
+        publish-pages = "!rm -rf build && git checkout gh-pages && git merge master && grunt && git commit 'build/*' -m 'Latest build' && git push origin gh-pages && git checkout -"
 
 Whenever you tag a new release you want to be available as a version that
 can be included from the github pages url, you should also do the following:

@@ -240,9 +240,15 @@ function annotatorImageSelect(options) {
         if (s.ias !== null) {
           s.ias.cancelSelection();
         }
+
+        // if this is an image annotation,
         // create a temporary highlight to show what is being annotated
-        var tmp_hl = imgselect_utils.drawImageHighlight(annotation);
-        tmp_hl.addClass('active-img-selection').removeClass('annotator-hl');
+        if (annotation.image_selection && annotation.image_selection.src) {
+          var tmp_hl = imgselect_utils.drawImageHighlight(annotation);
+          if (tmp_hl) {
+            tmp_hl.addClass('active-img-selection').removeClass('annotator-hl');
+          }
+        }
         return true;
       },
 
