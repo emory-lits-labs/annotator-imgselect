@@ -1,11 +1,14 @@
 ---
+title: annotator-imgselect
+description: Annotator.js plugin for selecting and annotating portions of images
+url: http://emory-lits-labs.github.io/annotator-imgselect/
 ---
 <!doctype html>
 <html>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>annotator-imgselect by emory-lits-labs</title>
+    <title>{{ title }} by emory-lits-labs</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/github-light.css">
@@ -13,13 +16,21 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <meta content="summary" name="twitter:card" />
+    <meta content="{{ page.title }}" name="twitter:title" />
+    <meta content="{{ page.description }}" name="twitter:description" />
+    <meta content="website" property="og:type" />
+    <meta content="{{ page.title }}" property="og:title" />
+    <meta content="{{ page.url }}" property="og:url" />
+    <meta content="{{ page.description }}" property="og:description" />
   </head>
   <body>
     <div class="wrapper">
       <header>
-        <h1>annotator-imgselect</h1>
+        <h1>{{ page.title }}</h1>
         <p><a href="https://github.com/openannotation/annotator">Annotator.js</a>
-         plugin for selecting and annotating portions of images.</p>
+         plugin for selecting and annotating portions of images.
+         Designed for use with Annotator 2.x releases.</p>
 
         <p class="view"><a href="https://github.com/emory-lits-labs/annotator-imgselect">View the Project on GitHub <small>emory-lits-labs/annotator-imgselect</small></a></p>
 
@@ -39,15 +50,17 @@
 
 <p>Try it out in this <a href="demo/">simple image annotation demo</a>.</p>
 
+
 <h3>
 <a id="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h3>
 
-<p>Using this annotator plugin requires imgareaselect CSS and
-javascript and the annotator-imgselect javascript.  A minified version
-of the combined imgareaselect and annotator-imgselect are
-provided for convenience.</p>
+<p>Using this Annotator plugin requires
+<a href="http://odyniec.net/projects/imgareaselect/">ImgAreaSelect jQuery plugin</a> CSS and
+Javascript and the annotator-imgselect javascript.  A minified version
+of the combined ImgAreaSelect and annotator-imgselect code are
+provided for your convenience.</p>
 
-<p>Include the appropriate CSS and Javascript files:</p>
+<p>Include the combined CSS and Javascript files:</p>
 
 {% highlight html %}
 <link rel="stylesheet" type="text/css" href="http://emory-lits-labs.github.io/annotator-imgselect/src/jquery.imgareaselect-0.9.10/css/imgareaselect-default.css" />
@@ -65,6 +78,14 @@ configure it with a selector for images that can be annotated.</p>
     });
 {% endhighlight %}
 
+<h3>
+<a id="dependencies" class="anchor" href="#dependinces" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dependencies</h3>
+
+<ul>
+  <li><a href="https://jquery.com/">jQuery</a> 1.8+</li>
+  <li><a href="https://github.com/openannotation/annotator">Annotator.js</a> 2.x</li>
+  <li><a href="http://odyniec.net/projects/imgareaselect/">ImgAreaSelect jQuery plugin</a></li>
+</ul>
 
 <h3>
 <a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
