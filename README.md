@@ -52,6 +52,8 @@ To view the jekyll site for development, you should do the following:
 - make sure you have [jekyll installed](http://jekyllrb.com/docs/installation/)
 - run the site via jekyll: ```jekyll serve```
 
+To install grunt utilities for building a release, run ```npm install```.
+
 Released versions are published through GitHub site pages, which are served out from
 the gh-pages branch.  Following git-flow conventions, this should be an exact
 replica of the master branch.  As a convenience, to update the gh-pages branch
