@@ -40,7 +40,7 @@
 .imgareaselect-selection {
 }
 
-.active-img-selection {
+.tmp-img-selection {
     display: block!important;
     background-color: rgba(255, 0, 107, 0.18);
 }

@@ -52,6 +52,8 @@ To view the jekyll site for development, you should do the following:
 - make sure you have [jekyll installed](http://jekyllrb.com/docs/installation/)
 - run the site via jekyll: ```jekyll serve```
 
+To install grunt utilities for building a release, run ```npm install```.
+
 Released versions are published through GitHub site pages, which are served out from
 the gh-pages branch.  Following git-flow conventions, this should be an exact
 replica of the master branch.  As a convenience, to update the gh-pages branch
@@ -59,7 +61,7 @@ from master and push it to github, you may want to configure the following alias
 in your ``.git/config`` for this project:
 
     [alias]
-        publish-pages = "!rm -rf build && git checkout gh-pages && git merge master && grunt && git commit 'build/*' -m 'Latest build' && git push origin gh-pages && git checkout -"
+        publish-pages = "!rm -rf build && git checkout gh-pages && git merge master && grunt && git add 'build/*' && git commit 'build/*' -m 'Latest build' && git push origin gh-pages && git checkout -"
 
 Whenever you tag a new release you want to be available as a version that
 can be included from the github pages url, you should also do the following:

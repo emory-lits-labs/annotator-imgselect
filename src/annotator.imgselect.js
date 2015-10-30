@@ -30,7 +30,7 @@ function annotatorImageSelect(options) {
     selectionSetup: function() {
       $(document)
         .on('click.imgselection','.imgareaselect-outer, .annotator-cancel', function(evt) {
-          $(".active-img-selection").removeClass('active-img-selection');
+          $(".tmp-img-selection").remove();
         });
       return true;
     },
@@ -206,7 +206,7 @@ function annotatorImageSelect(options) {
           }
 
           // enable image selection on configured annotatable image
-          s.ias = options.element.imgAreaSelect({
+          var ias_opts = {
               instance: true,  // return an instance for later interaction
               handles: true,
               onInit: imgselect_utils.selectionSetup,
@@ -214,7 +214,14 @@ function annotatorImageSelect(options) {
               onSelectChange: imgselect_utils.selectionChange,
               onSelectEnd: imgselect_utils.selectionEnd,
               keys: true
-           });
+           }
+          // NOTE: imgAreaSelect is supposed to handle multiple elements,
+          // but cancelSelection does NOT work on secondary images
+          // As a workaround, initialize one imgAreaSelect instance for
+          // each image configured for image annotation
+          s.ias = $(options.element).toArray().map(function(el) {
+              return $(el).imgAreaSelect(ias_opts);
+          });
 
           // Customize the mouse cursor to indicate when configured image
           // can be selected for annotation.
@@ -238,7 +245,7 @@ function annotatorImageSelect(options) {
         // cancel image selection box if there is one
         // (mirrors annotator logic for unselecting text)
         if (s.ias !== null) {
-          s.ias.cancelSelection();
+          $.each(s.ias, function(idx, ias){ias.cancelSelection();});
         }
 
         // if this is an image annotation,
@@ -246,7 +253,7 @@ function annotatorImageSelect(options) {
         if (annotation.image_selection && annotation.image_selection.src) {
           var tmp_hl = imgselect_utils.drawImageHighlight(annotation);
           if (tmp_hl) {
-            tmp_hl.addClass('active-img-selection').removeClass('annotator-hl');
+            tmp_hl.addClass('tmp-img-selection').removeClass('annotator-hl');
           }
         }
         return true;
