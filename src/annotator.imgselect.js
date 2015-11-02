@@ -29,9 +29,15 @@ function annotatorImageSelect(options) {
     // image area inital setup
     selectionSetup: function() {
       $(document)
-        .on('click.imgselection','.imgareaselect-outer, .annotator-cancel', function(evt) {
+        .on('click.imgselection','.imgareaselect-outer', '.annotator-cancel', function(evt) {
           $(".tmp-img-selection").remove();
         });
+      // escape key exits editor, so should also clear temporary selection
+      $('.annotator-editor textarea').on('keydown', function(e) {
+        if (event.which === 27) {  // escape
+          $(".tmp-img-selection").remove();
+        }
+      });
       return true;
     },
 
@@ -213,7 +219,7 @@ function annotatorImageSelect(options) {
               onSelectStart: imgselect_utils.selectionStart,
               onSelectChange: imgselect_utils.selectionChange,
               onSelectEnd: imgselect_utils.selectionEnd,
-              keys: true
+              keys: false  // disable keyboard shortcuts because they conflict with annotator keys
            }
           // NOTE: imgAreaSelect is supposed to handle multiple elements,
           // but cancelSelection does NOT work on secondary images
