@@ -5,9 +5,11 @@ Image selection plugin for Annotator.js
 [Annotator 2.x](https://github.com/openannotation/annotator/releases).
 
 
-##Demo
+## Demo
 [View a simple demo of annotator-imgselect.](http://emory-lits-labs.github.io/annotator-imgselect/demo/)
 
+## License
+**annotator-imgselect** is distributed under the Apache 2.0 License.
 
 ##Dependencies
 * jQuery 1.8+
