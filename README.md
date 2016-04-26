@@ -7,9 +7,11 @@ Image selection plugin for Annotator.js
 Includes annotator.meltdown.css to adjust for annotator/meltdown
 style interactions.
 
-##Demo
+## Demo
 [View a simple demo of annotator-imgselect.](http://emory-lits-labs.github.io/annotator-imgselect/demo/)
 
+## License
+**annotator-imgselect** is distributed under the Apache 2.0 License.
 
 ##Dependencies
 * jQuery 1.8+
