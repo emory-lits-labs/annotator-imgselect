@@ -133,7 +133,7 @@ function annotatorImageSelect(options) {
        hl.attr('data-annotation-id', annotation.id);
      }
      // Save the annotation data on each highlighter element.
-     hl.data('annotation', annotation);
+     hl.attr('data-annotation', JSON.stringify(annotation));
 
      // add highlight to img parent element
      // NOTE: this relies on readux style/layout for correct placement

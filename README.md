@@ -4,8 +4,6 @@ Image selection plugin for Annotator.js
 **annotator-imgselect** is developed for
 [Annotator 2.x](https://github.com/openannotation/annotator/releases).
 
-Includes annotator.meltdown.css to adjust for annotator/meltdown
-style interactions.
 
 ## Demo
 [View a simple demo of annotator-imgselect.](http://emory-lits-labs.github.io/annotator-imgselect/demo/)
