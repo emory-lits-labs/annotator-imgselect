@@ -46,6 +46,7 @@ format is determined for storing image annotations.
 ## Developer Notes
 
 This project uses [git-flow](https://github.com/nvie/gitflow) branching conventions.
+Pull requests should be made against the **develop** branch for easiest integration.
 
 To view the jekyll site for development, you should do the following:
 - make sure you are on the **develop** branch
