@@ -284,6 +284,12 @@ function annotatorImageSelect(options) {
         return true;
       },
 
+      // Executed when an anotation is deleted
+      annotationDeleted: function (annotation) {
+        // Get the box area and remove it
+        $('span.annotator-hl[data-annotation-id=' + annotation.id + ']').remove()
+      },
+
       annotationsLoaded: function(annotations) {
         // look for any annotations with an image-selection
         // and create positioned div based on the selection coordinates
