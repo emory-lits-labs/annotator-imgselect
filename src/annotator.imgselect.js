@@ -49,6 +49,8 @@ function annotatorImageSelect(options) {
       var $visible_editor = $(".annotator-editor:not(.annotator-hide)");
       if ($visible_editor.length > 0){
         $visible_editor.addClass('annotator-hide');
+        // Remove the temporary boxes if the annotation was not created
+        $('.tmp-img-selection').remove();
       }
       // hide the adder whenever a new selection is started
       s.adder.hide();
