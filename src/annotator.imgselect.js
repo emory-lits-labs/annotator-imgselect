@@ -287,7 +287,7 @@ function annotatorImageSelect(options) {
       // Executed when an anotation is deleted
       annotationDeleted: function (annotation) {
         // Get the box area and remove it
-        $('span.annotator-hl[data-annotation-id=' + annotation.id + ']').remove()
+        $('span.annotator-hl[data-annotation-id=' + annotation.id + ']').remove();
       },
 
       annotationsLoaded: function(annotations) {
