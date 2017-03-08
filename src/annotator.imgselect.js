@@ -28,8 +28,8 @@ function annotatorImageSelect(options) {
   var imgselect_utils = {
     // image area inital setup
     selectionSetup: function() {
-      $(document)
-        .on('click.imgselection','.imgareaselect-outer', '.annotator-cancel', function(evt) {
+      $('click.imgselection .imgareaselect-outer .annotator-cancel')
+        .on('click', function(e) {
           $(".tmp-img-selection").remove();
         });
       // escape key exits editor, so should also clear temporary selection
